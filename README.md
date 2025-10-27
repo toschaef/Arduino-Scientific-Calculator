@@ -1,8 +1,9 @@
 # Scientific Calculator for Arduino
 
-I made this a while ago, and it might or might not compile. I may touch it up eventually
+I made this a while ago, and might touch it up eventually  
+It compiles on wowki, and can be used [here](https://wokwi.com/projects/445937649533105153)
 
-## Supported Operations
+## Usage
 
 Operations are entered using two-key combinations on the keypad  
 The first key (`A`, `B`, `C`, or `D`) selects a function group, and the second key chooses the specific operator
@@ -30,6 +31,8 @@ The first key (`A`, `B`, `C`, or `D`) selects a function group, and the second k
 
 Numbers and decimals (`0–9` and `.`) are entered directly  
 Implicit multiplication is supported!
+
+Calculate expression with `#`, and `#` again to reset
 
 ## Features
 - 4x4 keypad input with combo keys for operators to build functions  

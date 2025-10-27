@@ -112,16 +112,19 @@ void printChar(char ch) {
 }
 // print final lcd screen
 void printResult() {
-    double result = toRPN();
-    lcd.clear();
-    lcd.print(strFunc);
-    lcd.setCursor(0, 1);
-    lcd.print(result);
-    delay(5000);
+  double result = toRPN();
+  lcd.clear();
+  printFunc(0);
+  lcd.setCursor(0, 1);
+  lcd.print(result);
+
+  while (customKeypad.getKey() != '#') { // wait for # input
+    delay(10);
+  }
 }
 // print function
-void printFunc() {
-  lcd.setCursor(0, 1);
+void printFunc(int row) {
+  lcd.setCursor(0, row);
   int size = strFuncSize();
   if (size + 1 > 16) { // print last 16 if doesnt fit
     int diff = size - 16;
@@ -205,7 +208,7 @@ void getInputFunc() {
         default:
           strFunc[strindex++] = ch; // add ch to string func
       }
-      printFunc(); // print stringfunc
+      printFunc(1); // print stringfunc
 
       // check if anything except number
       if (isOp(ch) || isEx(ch) || ch == ')' || ch == '!') {
@@ -272,6 +275,8 @@ char getOp(char ch, char ch2) {
           return '['; // log base 10
         case 'D':
           return ']'; // ln
+        // case '.':
+        //   return '%'; // delete
       }
     case 'C':
       switch(ch2) {
